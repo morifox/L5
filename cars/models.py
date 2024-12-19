@@ -1,10 +1,11 @@
 from django.db import models
 
 class Car(models.Model):
-    make = models.CharField(max_length=100)
+    make = models.CharField(max_length=100, default='UNKNOWN')
     model = models.CharField(max_length=100)
     year = models.IntegerField()
-    vin = models.CharField(max_length=17, unique=True)
+    vin = models.CharField(max_length=17, unique=True, null=True)
+
 
     def __str__(self):
         return f"{self.make} {self.model} ({self.year})"
